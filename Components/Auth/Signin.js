@@ -57,11 +57,6 @@ function Signin() {
             Sign in
           </Button>
         </Box>
-        <Image
-          src="/svg/signin.svg"
-          width={{ xs: "15rem", sm: "30rem" }}
-          mr={{ xs: 0, sm: "10rem" }}
-        />
       </Flex>
     </Container>
   );

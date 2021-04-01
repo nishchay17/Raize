@@ -17,6 +17,7 @@ function QuestionPage() {
   async function getData(id) {
     const res = await axios.get(`${URL}/question/public/${id}`);
     setQuestion(res.data.question[0]);
+    console.log(res.data.question[0]);
   }
 
   useEffect(() => {

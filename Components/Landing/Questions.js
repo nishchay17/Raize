@@ -3,13 +3,14 @@ import { Box, Flex, Text } from "rebass";
 import Container from "../Common/Container";
 import { useRouter } from "next/router";
 
-const Card = ({ slug, tags }) => {
+const Card = ({ question, category, author, onClick }) => {
   const Tag = ({ name }) => {
     return (
       <Flex
         justifyContent="center"
         alignItems="center"
-        bg="primary"
+        bg="lightBlue"
+        color="dark"
         p="0.2rem 0.5rem"
         mr="1rem"
         mt="1rem"
@@ -23,59 +24,69 @@ const Card = ({ slug, tags }) => {
 
   return (
     <Flex
-      bg="darkBlue"
+      onClick={onClick}
+      bg="bg"
       p="1.5rem"
-      my="2rem"
+      mt="2rem"
+      width={{ xs: "100%", sm: "49%" }}
       sx={{
         borderRadius: "9px",
-        opacity: 0.9,
         cursor: "pointer",
-        ":hover": { opacity: 1 },
+        transition: "0.3s all",
+        ":hover": {
+          boxShadow: "1px 1px 10px #dcdcdc,-1px -1px 10px #e4e4e4",
+        },
       }}
-      width="100%"
       flexDirection="column"
       justifyContent="space-between"
     >
       <Text fontSize="1.5rem" fontWeight="500" mb="2rem">
-        {slug}
+        {question}
       </Text>
-      <Text>@Nishchay17</Text>
-      <Flex sx={{ flexWrap: "wrap" }}>
-        <Tag name="Javascript" />
-        <Tag name="Javascript" />
-        <Tag name="Javascript" />
-        <Tag name="Javascript" />
-        <Tag name="Javascript" />
-        <Tag name="Javascript" />
-      </Flex>
+      <Box>
+        <Text>{author ? "@" + author.username : "Anonymous"}</Text>
+        <Flex sx={{ flexWrap: "wrap" }}>
+          {category.map((category, idx) => (
+            <Tag name={category} key={idx} />
+          ))}
+        </Flex>
+      </Box>
     </Flex>
   );
 };
 
-function Questions() {
+function Questions({ topQuestions }) {
   const router = useRouter();
 
   return (
-    <Container mt="7rem">
+    <Container my={{ xs: "3rem", sm: "6rem" }}>
       <Flex alignItems="center" justifyContent="space-between">
-        <Text as="h2" fontSize="2.2rem" fontWeight="500">
+        <Text
+          as="h2"
+          fontSize={{ xs: "2rem", sm: "2.5rem" }}
+          fontWeight="500"
+          lineHeight="3rem"
+        >
           Top <Box as="br" display={{ xs: "block", sm: "none" }} /> Questions
         </Text>
         <Text
           fontSize="1.2rem"
-          color="primary"
+          color="blue"
           sx={{ cursor: "pointer" }}
           onClick={() => router.push("/questions")}
         >
           See all
         </Text>
       </Flex>
-      <Box>
-        <Card slug="Aedb eoi d inwone d nowiedn" />
-        <Card slug="Aedb eoi d inwone d nowiedn" />
-        <Card slug="Aedb eoi d inwone d nowiedn" />
-        <Card slug="Aedb eoi d inwone d nowiedn" />
-      </Box>
+      <Flex flexWrap="wrap" justifyContent="space-between">
+        {topQuestions.map((data) => (
+          <Card
+            key={data._id}
+            {...data}
+            onClick={() => router.push(`question/${data.publicId}`)}
+          />
+        ))}
+      </Flex>
     </Container>
   );
 }

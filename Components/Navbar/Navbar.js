@@ -8,10 +8,10 @@ function Navbar({ tab }) {
   const router = useRouter();
 
   return (
-    <Box bg="dark">
+    <Box>
       <Container>
         <Flex
-          py="1.5rem"
+          py="1rem"
           as="nav"
           width="100%"
           justifyContent="space-between"
@@ -22,7 +22,6 @@ function Navbar({ tab }) {
               as="h2"
               mr={{ xs: "0", sm: "4rem" }}
               fontSize="2.5rem"
-              color="purple"
               sx={{
                 cursor: "pointer",
               }}
@@ -39,12 +38,8 @@ function Navbar({ tab }) {
               sx={{
                 transition: "0.2s all",
                 cursor: "pointer",
-                borderBottom: "2px solid",
-                borderColor: tab === "home" ? "" : "rgba(0, 0, 0, 0)",
                 ":hover": {
-                  borderBottom: "2px solid",
-                  borderColor: "purple",
-                  color: "purple",
+                  color: "blue",
                 },
               }}
               onClick={() => router.push("/")}
@@ -57,13 +52,9 @@ function Navbar({ tab }) {
               mr="1.5rem"
               sx={{
                 transition: "0.2s all",
-                borderBottom: "2px solid",
                 cursor: "pointer",
-                borderColor: tab === "category" ? "" : "rgba(0, 0, 0, 0)",
                 ":hover": {
-                  borderBottom: "2px solid",
-                  borderColor: "purple",
-                  color: "purple",
+                  color: "blue",
                 },
               }}
               onClick={() => router.push("/category")}
@@ -75,13 +66,9 @@ function Navbar({ tab }) {
               height="1.5rem"
               sx={{
                 transition: "0.2s all",
-                borderBottom: "2px solid",
-                borderColor: tab === "question" ? "" : "rgba(0, 0, 0, 0)",
                 cursor: "pointer",
                 ":hover": {
-                  borderBottom: "2px solid",
-                  borderColor: "purple",
-                  color: "purple",
+                  color: "blue",
                 },
               }}
               onClick={() => router.push("/questions")}
@@ -91,17 +78,18 @@ function Navbar({ tab }) {
           </Flex>
           <Flex>
             <Button
-              mr="1.5rem"
               fontSize={{ xs: "1.1rem", sm: "1rem" }}
-              onClick={() => router.push("/signup")}
+              onClick={() => router.push("/signin")}
+              mr="1.5rem"
+              variant="outline"
             >
-              signup
+              Sign in
             </Button>
             <Button
               fontSize={{ xs: "1.1rem", sm: "1rem" }}
-              onClick={() => router.push("/signin")}
+              onClick={() => router.push("/signup")}
             >
-              signin
+              Sign up
             </Button>
           </Flex>
         </Flex>

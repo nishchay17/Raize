@@ -5,12 +5,7 @@ import Link from "next/link";
 
 function Footer() {
   return (
-    <Flex
-      bg="dark"
-      mt="1rem"
-      pb={{ xs: "3rem", sm: 0 }}
-      sx={{ borderTop: "1px solid", borderColor: "primary" }}
-    >
+    <Flex bg="dark" color="white" mt="1rem" pb={{ xs: "3rem", sm: 0 }}>
       <Container width="100%">
         <Flex width="100%" py="1.5rem">
           <Box>
@@ -18,7 +13,6 @@ function Footer() {
               as="h4"
               mr={{ xs: "0", sm: "7rem" }}
               fontSize="2.5rem"
-              color="purple"
               sx={{
                 userSelect: "none",
                 cursor: "pointer",

@@ -4,59 +4,63 @@ import Button from "../Common/Button";
 import Container from "../Common/Container";
 import Input from "../Form/Input";
 import Link from "next/link";
+import Card from "../Common/Card";
 
 function Signin() {
   return (
-    <Container minHeight="85vh">
+    <Container minHeight="80vh">
       <Flex
-        mt={{ xs: "2rem", sm: "7rem" }}
-        justifyContent="space-between"
+        mt={{ xs: "2rem", sm: "5rem" }}
+        justifyContent="space-evenly"
         alignItems="center"
         flexDirection={{ xs: "column-reverse", sm: "row" }}
       >
-        <Box width={{ xs: "100%", sm: "auto" }}>
-          <Text
-            mt={{ xs: "2rem", sm: 0 }}
-            as="h2"
-            fontWeight="400"
-            fontSize={{ xs: "2.2rem", sm: "1.7rem" }}
-            mb="2rem"
-          >
-            Login here
-          </Text>
-          <Input label="Email" />
-          <Input label="Password" type="password" />
-          <Link href="forgot-password">
+        <Image src="/svg/peep-22.svg" />
+        <Card bg="bg" width={{ xs: "100%", sm: "50%" }}>
+          <Box width={{ xs: "100%", sm: "auto" }}>
             <Text
-              as="a"
-              color="purple"
-              fontSize={{ xs: "1.2rem", sm: "0.9rem" }}
-              sx={{ cursor: "pointer" }}
+              mt={{ xs: "2rem", sm: 0 }}
+              as="h2"
+              fontWeight="400"
+              fontSize={{ xs: "2.2rem", sm: "1.7rem" }}
+              mb="1.7rem"
             >
-              Forgot Password
+              Login here
             </Text>
-          </Link>
-          <Text mt="0.5rem" fontSize={{ xs: "1.2rem", sm: "0.9rem" }}>
-            New user? Get started{" "}
-            <Link href="/signup">
+            <Input label="Username" />
+            <Input label="Password" type="password" />
+            <Link href="forgot-password">
               <Text
                 as="a"
-                color="purple"
+                color="blue"
+                fontSize={{ xs: "1.2rem", sm: "0.9rem" }}
                 sx={{ cursor: "pointer" }}
-                display="inline"
               >
-                here
+                Forgot Password
               </Text>
             </Link>
-          </Text>
-          <Button
-            mt="1.5rem"
-            fontSize={{ xs: "1.5rem", sm: "1.2rem" }}
-            mb={{ xs: "2rem", sm: 0 }}
-          >
-            Sign in
-          </Button>
-        </Box>
+            <Text fontSize={{ xs: "1.2rem", sm: "0.9rem" }}>
+              New user? Get started{" "}
+              <Link href="/signup">
+                <Text
+                  as="a"
+                  color="blue"
+                  sx={{ cursor: "pointer" }}
+                  display="inline"
+                >
+                  here
+                </Text>
+              </Link>
+            </Text>
+            <Button
+              mt="1.5rem"
+              fontSize={{ xs: "1.5rem", sm: "1.2rem" }}
+              mb={{ xs: "2rem", sm: 0 }}
+            >
+              Sign in
+            </Button>
+          </Box>
+        </Card>
       </Flex>
     </Container>
   );

@@ -7,16 +7,14 @@ const Card = ({ title }) => {
     <Flex
       flexDirection="column"
       alignItems="center"
-      bg="primary"
+      bg="blue"
+      color="white"
       width={{ xs: "100%", sm: "30%" }}
       flexShrink={0}
       p="1.5rem"
       mb={{ xs: "1rem", sm: 0 }}
       sx={{
         borderRadius: "5px",
-        backgroundColor: "primary",
-        backgroundImage: "url('/svg/Pattern-Randomized.svg')",
-        backgroundSize: "cover",
         transition: "0.3s all",
         ":hover": {
           transform: "scale(1.01)",
@@ -37,7 +35,7 @@ function Categories() {
         <Text
           my={{ xs: "2rem", sm: "4rem" }}
           textAlign="center"
-          fontSize="2.2rem"
+          fontSize="2.5rem"
           fontWeight="500"
         >
           All Categories

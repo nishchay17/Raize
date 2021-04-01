@@ -1,24 +1,10 @@
 import React from "react";
-import { Box, Text, Flex } from "rebass";
+import { Box, Text, Flex, Image } from "rebass";
 import Container from "../Common/Container";
 import Animation from "../Common/Animation";
-import data from "../../public/animation/lf30_editor_gyxpmc94.json";
-import mouse from "../../public/animation/lf30_editor_lfzw9h4e.json";
+import scroll from "../../public/animation/scroll.json";
 import Button from "../Common/Button";
-import { keyframes, css } from "@emotion/react";
 import { useRouter } from "next/router";
-
-const rotate = keyframes`
-  from {
-    transform: translateY(-1rem);
-  }
-  50% {
-    transform: translateY(1rem);
-  }
-  to {
-    transform: translateY(-1rem);
-  }
-`;
 
 function Hero() {
   const router = useRouter();
@@ -27,52 +13,51 @@ function Hero() {
     <Container>
       <Flex
         width="100%"
-        mt={{ xs: "2rem", sm: "4rem" }}
+        mb="1.5rem"
         justifyContent="space-between"
         alignItems="center"
         flexDirection={{ xs: "column-reverse", sm: "row" }}
       >
-        <Box>
+        <Box flex={1}>
           <Text
             as="h1"
-            fontSize="3.3rem"
+            fontSize={{ xs: "2.5rem", sm: "3.2rem" }}
             fontWeight="500"
             py="0.5rem"
-            sx={{ wordSpacing: "-0.5rem" }}
+            lineHeight="3.2rem"
           >
             Prepare for Interviews
           </Text>
-          <Text as="p" mt="1rem" fontSize="1.7rem">
+          <Text as="p" mt="1rem" fontFamily="Dancing Script" fontSize="2.5rem">
             Share solve learn
           </Text>
           <Flex mt="1.5rem">
             <Button
-              fontSize={{ xs: "1.5rem", sm: "1.2rem" }}
+              fontSize={{ xs: "1.3rem", sm: "1.2rem" }}
               onClick={() => router.push("/signup")}
             >
               Sign up
             </Button>
             <Button
-              fontSize={{ xs: "1.5rem", sm: "1.2rem" }}
+              variant="outline"
+              fontSize={{ xs: "1.3rem", sm: "1.2rem" }}
               onClick={() => router.push("/questions")}
               ml="1.5rem"
             >
               All questions
             </Button>
           </Flex>
-          <Flex mt="3.5rem" alignItems="center">
-            <Text mr="1rem">Scroll down to know more</Text>
-            <Animation lotti={mouse} width="2rem" />
+          <Flex mt={{ xs: "1.5rem", sm: "3.5rem" }} alignItems="center">
+            <Text mr="1rem" display={{ xs: "none", sm: "block" }} mb="0.45rem">
+              Scroll down to know more
+            </Text>
+            <Text mr="1rem" display={{ xs: "block", sm: "none" }}>
+              Swipe down to know more
+            </Text>
+            <Animation lotti={scroll} width="2rem" />
           </Flex>
         </Box>
-        <Box
-          width={{ xs: "20rem", sm: "35rem" }}
-          css={css`
-            animation: ${rotate} 5s linear infinite;
-          `}
-        >
-          <Animation lotti={data} height={"auto"} />
-        </Box>
+        <Image flex={1} src="/svg/people.svg" />
       </Flex>
     </Container>
   );

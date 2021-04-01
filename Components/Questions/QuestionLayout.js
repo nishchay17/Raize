@@ -3,13 +3,13 @@ import { Flex, Text, Box } from "rebass";
 import Container from "../Common/Container";
 import { BiFilterAlt } from "react-icons/bi";
 
-function QuestionCard({ slug }) {
+function QuestionCard({ question, category, author }) {
   const Tag = ({ name }) => {
     return (
       <Flex
         justifyContent="center"
         alignItems="center"
-        bg="primary"
+        bg="lightBlue"
         p="0.2rem 0.5rem"
         mr="1rem"
         mt="1rem"
@@ -26,34 +26,31 @@ function QuestionCard({ slug }) {
       width="100%"
       p="1.5rem"
       mb="1rem"
-      bg="darkBlue"
-      sx={{ borderRadius: "5px" }}
+      bg="bg"
+      sx={{ borderRadius: "5px", cursor: "pointer" }}
       flexDirection="column"
     >
       <Text fontSize="1.5rem" fontWeight="500" mb="2rem">
-        {slug}
+        {question}
       </Text>
-      <Text>@Nishchay17</Text>
+      <Text>{author.name}</Text>
       <Flex sx={{ flexWrap: "wrap" }}>
-        <Tag name="Javascript" />
-        <Tag name="Javascript" />
-        <Tag name="Javascript" />
-        <Tag name="Javascript" />
-        <Tag name="Javascript" />
-        <Tag name="Javascript" />
+        {category.map((name) => (
+          <Tag name={name} />
+        ))}
       </Flex>
     </Flex>
   );
 }
 
-function QuestionLayout() {
+function QuestionLayout({ questions }) {
   return (
     <Container>
       <Flex flexDirection="column">
         <Text
           my={{ xs: "2rem", sm: "4rem" }}
           textAlign="center"
-          fontSize="2.2rem"
+          fontSize="2.5rem"
           fontWeight="500"
         >
           Questions
@@ -69,7 +66,8 @@ function QuestionLayout() {
               width="100%"
               height="auto"
               sx={{ borderRadius: "5px" }}
-              bg="primary"
+              bg="blue"
+              color="white"
               p="1.5rem"
             >
               <Flex
@@ -85,11 +83,9 @@ function QuestionLayout() {
             </Box>
           </Flex>
           <Box flex={2}>
-            {Array(5)
-              .fill()
-              .map(() => (
-                <QuestionCard slug="Hihdweq iohdw dn" />
-              ))}
+            {questions.map((data) => (
+              <QuestionCard {...data} key={data._id} />
+            ))}
           </Box>
         </Flex>
       </Flex>

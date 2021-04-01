@@ -18,10 +18,10 @@ function Input({ label, ...props }) {
         sx={{
           borderRadius: "5px",
           outline: "none",
-          border: "2px solid",
-          borderColor: "purple",
+          border: "1px solid",
+          borderColor: "dark",
           ":focus": {
-            borderColor: "primary",
+            borderColor: "blue",
           },
         }}
         {...props}

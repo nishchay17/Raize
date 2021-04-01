@@ -7,21 +7,22 @@ const Card = ({ title, text }) => {
     <Flex
       flexDirection="column"
       alignItems="center"
-      bg="primary"
+      bg="blue"
+      color="white"
       flex={1}
       p="1.5rem"
       sx={{
         borderRadius: "5px",
-        backgroundColor: "primary",
-        backgroundImage: "url('/svg/Pattern-Randomized.svg')",
-        backgroundSize: "cover",
-        transition: "0.3s all",
-        ":hover": {
-          transform: "scale(1.005)",
-        },
+        boxShadow: "8px 8px 13px #d0d0d0, -8px -8px 13px #f0f0f0",
       }}
     >
-      <Text as="h2" fontSize="1.5rem" fontWeight="500" mb="1rem">
+      <Text
+        as="h2"
+        fontFamily="Dancing Script"
+        fontSize="2rem"
+        fontWeight="500"
+        mb="1rem"
+      >
         {title}
       </Text>
       <Text as="p" lineHeight="1.5rem" textAlign="center">
@@ -33,34 +34,41 @@ const Card = ({ title, text }) => {
 
 function KnowMore() {
   return (
-    <Container mt={{ xs: "5rem", sm: "9rem" }} mb="4rem">
-      <Flex>
-        <Box width="100%">
-          <Text mb="4rem" textAlign="center" fontSize="2.2rem" fontWeight="500">
-            Know more
-          </Text>
-          <Flex
-            flexDirection={{ xs: "column", sm: "row" }}
-            justifyContent="space-between"
-            alignItems="stretch"
-            sx={{ gap: ["", "1rem", "2rem"] }}
-          >
-            <Card
-              title="Share"
-              text="Make a account, start sharing questions to help other."
-            />
-            <Card
-              title="Solve"
-              text="Solve more and more questions, they are MCQs this answer and explanation at the end."
-            />
-            <Card
-              title="Learn"
-              text="Learn by solving question and ace the interview."
-            />
-          </Flex>
-        </Box>
-      </Flex>
-    </Container>
+    <Box bg="bg" pt="2rem" pb="3rem">
+      <Container mt={{ xs: 0, sm: 0 }}>
+        <Flex>
+          <Box width="100%">
+            <Text
+              mb="2rem"
+              textAlign="center"
+              fontSize={{ xs: "2rem", sm: "2.5rem" }}
+              fontWeight="500"
+            >
+              Know more
+            </Text>
+            <Flex
+              flexDirection={{ xs: "column", sm: "row" }}
+              justifyContent="space-between"
+              alignItems="stretch"
+              sx={{ gap: ["", "1rem", "2rem"] }}
+            >
+              <Card
+                title="Share"
+                text="Make a account and start sharing questions to help others."
+              />
+              <Card
+                title="Solve"
+                text="Solve more and more questions, and bookmark them for future reference."
+              />
+              <Card
+                title="Learn"
+                text="Learn by solving question and ace the interview."
+              />
+            </Flex>
+          </Box>
+        </Flex>
+      </Container>
+    </Box>
   );
 }
 

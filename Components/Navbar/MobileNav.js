@@ -8,7 +8,7 @@ function MobileNav() {
   const router = useRouter();
   return (
     <Flex
-      bg="purple"
+      bg="dark"
       display={{ xs: "flex", sm: "none" }}
       sx={{
         position: "fixed",
@@ -21,8 +21,8 @@ function MobileNav() {
     >
       <Flex
         alignItems="center"
-        color={router.route === "/" ? "purple" : "white"}
-        bg={router.route === "/" ? "white" : "purple"}
+        color={router.route === "/" ? "dark" : "white"}
+        bg={router.route === "/" ? "white" : "dark"}
         width="100%"
         height="100%"
         p="1rem"
@@ -34,8 +34,8 @@ function MobileNav() {
         <Box>Home</Box>
       </Flex>
       <Flex
-        color={router.route === "/questions" ? "purple" : "white"}
-        bg={router.route === "/questions" ? "white" : "purple"}
+        color={router.route === "/questions" ? "dark" : "white"}
+        bg={router.route === "/questions" ? "white" : "dark"}
         alignItems="center"
         width="100%"
         height="100%"
@@ -48,8 +48,8 @@ function MobileNav() {
         <Box>Questions</Box>
       </Flex>
       <Flex
-        color={router.route === "/category" ? "purple" : "white"}
-        bg={router.route === "/category" ? "white" : "purple"}
+        color={router.route === "/category" ? "dark" : "white"}
+        bg={router.route === "/category" ? "white" : "dark"}
         alignItems="center"
         width="100%"
         height="100%"

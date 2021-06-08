@@ -93,4 +93,8 @@ function QuestionLayout({ questions }) {
   );
 }
 
+QuestionLayout.defaultProps = {
+  questions: [],
+};
+
 export default QuestionLayout;

@@ -4,8 +4,6 @@ import Hero from "../Components/Landing/Hero";
 import KnowMore from "../Components/Landing/KnowMore";
 import Questions from "../Components/Landing/Questions";
 import Layout from "../Components/Layout";
-import axios from "axios";
-import { URL } from "../api";
 
 export default function Home({ topQuestions }) {
   return (
@@ -13,20 +11,20 @@ export default function Home({ topQuestions }) {
       <Navbar tab={"home"} />
       <Hero />
       <KnowMore />
-      <Questions topQuestions={topQuestions.questions} />
+      <Questions />
     </Layout>
   );
 }
 
-export async function getStaticProps(context) {
-  let respose = {};
-  try {
-    respose = await axios.get(`${URL}/question/top`);
-  } catch (err) {
-    respose = {};
-  }
+// export async function getStaticProps(context) {
+//   let respose = {};
+//   try {
+//     respose = await axios.get(`${URL}/question/top`);
+//   } catch (err) {
+//     respose = {};
+//   }
 
-  return {
-    props: { topQuestions: respose.data },
-  };
-}
+//   return {
+//     props: { topQuestions: respose.data },
+//   };
+// }

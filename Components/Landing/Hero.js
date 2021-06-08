@@ -5,9 +5,12 @@ import Animation from "../Common/Animation";
 import scroll from "../../public/animation/scroll.json";
 import Button from "../Common/Button";
 import { useRouter } from "next/router";
+import { useUser } from "../../redux/UserSlice";
 
 function Hero() {
   const router = useRouter();
+
+  const { userState } = useUser();
 
   return (
     <Container>
@@ -32,12 +35,21 @@ function Hero() {
             Share solve learn
           </Text>
           <Flex mt="1.5rem">
-            <Button
-              fontSize={{ xs: "1.3rem", sm: "1.2rem" }}
-              onClick={() => router.push("/signup")}
-            >
-              Sign up
-            </Button>
+            {userState.isLoggedIn ? (
+              <Button
+                fontSize={{ xs: "1.3rem", sm: "1.2rem" }}
+                onClick={() => router.push("/add")}
+              >
+                Add question
+              </Button>
+            ) : (
+              <Button
+                fontSize={{ xs: "1.3rem", sm: "1.2rem" }}
+                onClick={() => router.push("/signup")}
+              >
+                Sign up
+              </Button>
+            )}
             <Button
               variant="outline"
               fontSize={{ xs: "1.3rem", sm: "1.2rem" }}

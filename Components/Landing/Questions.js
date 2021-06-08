@@ -3,7 +3,7 @@ import { Box, Flex, Text } from "rebass";
 import Container from "../Common/Container";
 import { useRouter } from "next/router";
 
-const Card = ({ question, category, author, onClick }) => {
+const Card = ({ createdByInfo, title, tags, author, onClick }) => {
   const Tag = ({ name }) => {
     return (
       <Flex
@@ -41,13 +41,13 @@ const Card = ({ question, category, author, onClick }) => {
       justifyContent="space-between"
     >
       <Text fontSize="1.5rem" fontWeight="500" mb="2rem">
-        {question}
+        {title}
       </Text>
       <Box>
-        <Text>{author ? "@" + author.username : "Anonymous"}</Text>
+        <Text>{createdByInfo ? "@" + createdByInfo.name : "Anonymous"}</Text>
         <Flex sx={{ flexWrap: "wrap" }}>
-          {category.map((category, idx) => (
-            <Tag name={category} key={idx} />
+          {tags.map((tag, idx) => (
+            <Tag name={tag} key={idx} />
           ))}
         </Flex>
       </Box>
@@ -83,12 +83,16 @@ function Questions({ topQuestions }) {
           <Card
             key={data._id}
             {...data}
-            onClick={() => router.push(`question/${data.publicId}`)}
+            onClick={() => router.push(`question/${data._id}`)}
           />
         ))}
       </Flex>
     </Container>
   );
 }
+
+Questions.defaultProps = {
+  topQuestions: [],
+};
 
 export default Questions;

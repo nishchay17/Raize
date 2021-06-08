@@ -1,11 +1,14 @@
 import React from "react";
 import { Flex, Text, Box } from "rebass";
+import { useRouter } from "next/router";
+
 import Button from "../Common/Button";
 import Container from "../Common/Container";
-import { useRouter } from "next/router";
+import { useUser } from "../../redux/UserSlice";
 
 function Navbar({ tab }) {
   const router = useRouter();
+  const { userState, userDispatch } = useUser();
 
   return (
     <Box>
@@ -76,21 +79,42 @@ function Navbar({ tab }) {
               Questions
             </Text>
           </Flex>
-          <Flex>
-            <Button
-              fontSize={{ xs: "1.1rem", sm: "1rem" }}
-              onClick={() => router.push("/signin")}
-              mr="1.5rem"
-              variant="outline"
-            >
-              Sign in
-            </Button>
-            <Button
-              fontSize={{ xs: "1.1rem", sm: "1rem" }}
-              onClick={() => router.push("/signup")}
-            >
-              Sign up
-            </Button>
+          <Flex alignItems="center">
+            {userState.isLoggedIn ? (
+              <>
+                <Text>Hi, {userState.name}</Text>
+                <Button
+                  mx="1.5rem"
+                  fontSize={{ xs: "1.1rem", sm: "1rem" }}
+                  onClick={() => userDispatch.logout()}
+                >
+                  Logout
+                </Button>
+                <Button
+                  fontSize={{ xs: "1.1rem", sm: "1rem" }}
+                  onClick={() => router.push("/profile")}
+                >
+                  Profile
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button
+                  fontSize={{ xs: "1.1rem", sm: "1rem" }}
+                  onClick={() => router.push("/signin")}
+                  mr="1.5rem"
+                  variant="outline"
+                >
+                  Sign in
+                </Button>
+                <Button
+                  fontSize={{ xs: "1.1rem", sm: "1rem" }}
+                  onClick={() => router.push("/signup")}
+                >
+                  Sign up
+                </Button>
+              </>
+            )}
           </Flex>
         </Flex>
       </Container>

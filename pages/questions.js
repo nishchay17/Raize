@@ -14,18 +14,18 @@ function Questions({ questions }) {
   );
 }
 
-export async function getServerSideProps(context) {
-  let respose = {};
+// export async function getServerSideProps(context) {
+//   let respose = {};
 
-  try {
-    respose = await axios.get(`${URL}/question/all`);
-  } catch (err) {
-    res = {};
-  }
+//   try {
+//     respose = await axios.get(`${URL}/question/all`);
+//   } catch (err) {
+//     res = {};
+//   }
 
-  return {
-    props: { questions: respose.data.questions },
-  };
-}
+//   return {
+//     props: { questions: respose.data.questions },
+//   };
+// }
 
 export default Questions;

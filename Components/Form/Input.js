@@ -1,9 +1,9 @@
 import React from "react";
 import { Box, Text } from "rebass";
 
-function Input({ label, ...props }) {
+function Input({ label, errors, ...props }) {
   return (
-    <Box mb="2rem">
+    <Box mb="1.5rem">
       <Text as="label" fontSize={{ xs: "1.2rem", sm: "1rem" }}>
         {label}
       </Text>
@@ -20,12 +20,18 @@ function Input({ label, ...props }) {
           outline: "none",
           border: "1px solid",
           borderColor: "dark",
+          letterSpacing: "0.5px",
           ":focus": {
             borderColor: "blue",
           },
         }}
         {...props}
       />
+      {errors && errors[props.name] && (
+        <Text color="error" mt="0.5rem">
+          {errors[props.name]?.message}
+        </Text>
+      )}
     </Box>
   );
 }
